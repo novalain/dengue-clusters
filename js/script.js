@@ -11,16 +11,25 @@ angular.module('dengueApp', [])
 	var heatmapData = [];
 	var heatmap;
 	var today = true;
+	$scope.loading = true;
 
 
   function initialize() {
+
+  	
 	  map = new google.maps.Map(document.getElementById('map'), {
 	    center: new google.maps.LatLng(1.290280, 103.851959),
 	    zoom: 11,
 	    mapTypeId: google.maps.MapTypeId.TERRAIN
 	  });
 	  
-	  map.data.loadGeoJson('data/dengue-clusters.geojson');
+
+	  map.data.loadGeoJson('data/dengue-clusters.geojson', null, function(){
+
+	  	$scope.loading = false;
+	  	$scope.$apply();
+
+	  });
 
 	}
 
@@ -39,9 +48,12 @@ angular.module('dengueApp', [])
 
 	$scope.showFutureData = function(){
 
+
+
 		if(!today)
 			return; 
 
+		$scope.loading = true;
 		today = false;
 
 		clearAll();
@@ -70,10 +82,12 @@ angular.module('dengueApp', [])
 			});
 
 			heatmap.setMap(map);
+			$scope.loading = false;
 
 		}, function(err){
 
 			console.log("err", err);
+			$scope.loading = false;
 
 		})
 
@@ -121,10 +135,17 @@ angular.module('dengueApp', [])
 		if(today)
 			return;
 
+		$scope.loading = true;
 		today = true;
 
 		clearAll();
-		map.data.loadGeoJson('data/dengue-clusters.geojson');
+
+		map.data.loadGeoJson('data/dengue-clusters.geojson', null, function(){
+
+			$scope.loading = false;
+			$scope.$apply();
+
+		});
 
 	}
 

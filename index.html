@@ -24,6 +24,8 @@
     <!--<h4 style="font-size:2.5em; padding:10px;text-align:center; font-weight:200;">Hello Data Science</h4>-->
 
     <div id="map"></div>
+    <div ng-show="loading" class="overlay-container"></div>
+    <img ng-show="loading" class="loading" src="loading.svg"/>
 
     <div style="position:absolute; bottom:10px; left:0; right:0;"class="button-container">
       <a ng-click="showTodaysData()" class="waves-effect waves-light btn-large red">Today</a>
