@@ -1,4 +1,4 @@
-<html>
+<html ng-app="dengueApp" lang="en">
   <head>
     <title>Dengue-clusters</title>
      <!--Import Google Icon Font-->
@@ -9,10 +9,15 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
 
-  <body>
+  <body ng-controller="MainCtrl">
   	
-    <p>Hello Data Science</p>
+    <h4 style="font-size:2.5em; padding:10px;text-align:center; font-weight:200;">Hello Data Science</h4>
+
+    <div id="map"></div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6XNrre4LvX-3tC2JLxcKuCuWtvwPN_6U"
+  type="text/javascript"></script>
   </body>
 </html>
